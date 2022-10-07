@@ -33,7 +33,7 @@ const appLoader = () => {
     load()
 }
 
-// appLoader()
+appLoader()
 
 // Animation
 const appAnimation = () => {
@@ -59,37 +59,14 @@ const appAnimation = () => {
         if(animTop < triggerBottom) {
             anim.classList.add('show')
         } 
-        else {
-            anim.classList.remove('show')
-        }
+        // else {
+        //     anim.classList.remove('show')
+        // }
     })
     }
 }
 
 appAnimation()
-
-
-// Sticky Header
-const appStickyHeader = () => {
-    const header = document.getElementById('header')
-    const showcase = document.getElementById('showcase')
-    let triggerHeight
-    if (!header && showcase) return
-
-    triggerHeight = showcase.offsetHeight - 150;
-
-    window.addEventListener('scroll', function () {
-        let loc = window.scrollY
-        if (loc > triggerHeight) {
-            header.classList.add('scrolled')
-        } else {
-            header.classList.remove('scrolled')
-        }
-    })
-    console.log(triggerHeight)
-}
-
-// appStickyHeader()
 
 
 // Menu Button
@@ -99,11 +76,11 @@ const appMenuBtn = () => {
 
     menuBtn.addEventListener('click', () => page.classList.toggle('menuActive'))
 
-    window.addEventListener('resize', function() {
-        if (window.matchMedia('(min-width: 720px)').matches) {
-            if (page.classList.contains('menuActive')) page.classList.remove('menuActive')
-        }
-    })
+    // window.addEventListener('resize', function() {
+    //     if (window.matchMedia('(min-width: 720px)').matches) {
+    //         if (page.classList.contains('menuActive')) page.classList.remove('menuActive')
+    //     }
+    // })
 
     const nav = document.querySelector('.nav')
     nav.querySelectorAll('.nav a').forEach(function(link) {
@@ -120,7 +97,8 @@ appMenuBtn()
 const appCounter = () => {
     const statistics = document.querySelector('.statistics')
     const startCount = document.querySelectorAll('.counter')
-    
+
+    // IntersectionObserver
     let CounterObserver = new IntersectionObserver(
         (entries, observer) => {
             let [entry] = entries;
@@ -156,43 +134,14 @@ observer.unobserve(statistics)
     threshold: window.innerWidth > 768 ? 0.3 : 0.2,
 }
 )
-CounterObserver.observe(statistics)
+    CounterObserver.observe(statistics)
+
+// statistics.forEach(stats => {
+//     CounterObserver.observe(stats)
+// })
 }
 
 appCounter()
-
-
-// Modal
-const appModal = () => {
-    const modalBox = document.querySelector('.modal-box')
-    const closed = document.querySelector('.modal-box svg')
-    const img = document.querySelectorAll('.project')
-    const modal = document.querySelectorAll('.modal')
-
-    img.forEach(img => img.addEventListener('click', (e)=> {
-        modalBox.classList.add('modalOpen')
-        img.lastElementChild.classList.add('modalActive')
-    }  
-    ))
-
-    closed.addEventListener('click', (e) => {
-        modalBox.classList.remove('modalOpen')
-            for(let i = 0; i < modal.length; i++) {
-                modal[i].classList.remove('modalActive')
-        }
-    })
-
-    modalBox.addEventListener('click', (e) => {
-        if (e.target == modalBox) {
-            modalBox.classList.remove('modalOpen')
-            for(let i = 0; i < modal.length; i++) {
-                modal[i].classList.remove('modalActive')
-            }
-    }})
-}
-
-// appModal()
-
 
 // Button Scroll Top
 const appBtnTop = () => {
@@ -274,12 +223,33 @@ const moveElements = (e) => {
 
 document.addEventListener("mousemove", moveElements)
 
+
+
 // Parallax Scrolling
-const paralaxTop = document.querySelectorAll('.paralax-top')
+const appParalax = () => {
+    
+    const statistics = document.querySelector('.statistics')
+    const paralaxTop = document.querySelectorAll('.paralax-top')
+    const paralaxbottom = document.querySelectorAll('.paralax-bottom')
+    const paralaxRight = document.querySelectorAll('.paralax-right')
+    const paralaxLeft = document.querySelectorAll('.paralax-left')
 
 window.addEventListener('scroll', function() {
-    let value = this.window.scrollY
-    paralaxTop.forEach((paralaxTop) => {
-        paralaxTop.style.top = value * -0.25 + 'px'
+    let value = statistics.scrollY
+    paralaxTop.forEach(paralaxTop => {
+        paralaxTop.style.transform = 'translateY(' + value * -0.25 + 'px)'
     })
+    paralaxbottom.forEach(paralaxbottom => {
+        paralaxbottom.style.transform = 'translateY(' + value * 0.25 + 'px)'
+    })
+    paralaxRight.forEach(paralaxRight => {
+        paralaxRight.style.transform = 'translateX(' + value * 0.1 + 'px)'
+    })
+    paralaxLeft.forEach(paralaxLeft => {
+        paralaxLeft.style.transform = 'translateX(' + value * -0.1 + 'px)'
+    })
+    console.log(value)
 })
+}
+
+// appParalax()
