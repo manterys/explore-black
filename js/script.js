@@ -28,7 +28,7 @@ const appLoader = () => {
             
             page.classList.add('loaded')
             setTimeout(() => (page.style.opacity = 1), 1000)
-        }, 1200)
+        }, 2000)
     }   
     load()
 }
@@ -59,9 +59,9 @@ const appAnimation = () => {
         if(animTop < triggerBottom) {
             anim.classList.add('show')
         } 
-        else {
-            anim.classList.remove('show')
-        }
+        // else {
+        //     anim.classList.remove('show')
+        // }
     })
     }
 }
@@ -89,7 +89,7 @@ const appStickyHeader = () => {
     console.log(triggerHeight)
 }
 
-appStickyHeader()
+// appStickyHeader()
 
 
 // Menu Button
@@ -275,9 +275,11 @@ const moveElements = (e) => {
 document.addEventListener("mousemove", moveElements)
 
 // Parallax Scrolling
-const stars = document.getElementById('stars')
+const paralaxTop = document.querySelectorAll('.paralax-top')
 
 window.addEventListener('scroll', function() {
     let value = this.window.scrollY
-    stars.style.left = value * 0.25 + 'px'
+    paralaxTop.forEach((paralaxTop) => {
+        paralaxTop.style.top = value * -0.25 + 'px'
+    })
 })
