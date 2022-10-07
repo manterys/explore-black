@@ -59,9 +59,9 @@ const appAnimation = () => {
         if(animTop < triggerBottom) {
             anim.classList.add('show')
         } 
-        // else {
-        //     anim.classList.remove('show')
-        // }
+        else {
+            anim.classList.remove('show')
+        }
     })
     }
 }

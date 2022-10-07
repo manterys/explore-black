@@ -447,10 +447,11 @@ li a {
     height: 100px;
     /* top: 50%; */
     /* left: 50px; */
-    /* width: auto; */
+    width: 100%;
 }
 .about-img img:nth-child(2) {
     height: 200px;
+    width: 100%;
     /* width: auto; */
 }
 .about-content {
