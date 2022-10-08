@@ -496,7 +496,7 @@ li a:hover {
     justify-content: center;
     gap: 1.5rem;
     position: relative;
-    padding: var(--space-2);
+    padding: var(--space-3);
     text-align: center;
 }
 .counter-container {
@@ -544,15 +544,17 @@ li a:hover {
     left: 0;
 }
 .inspiration-img img:nth-child(2){
-    top: 150px;
+    top: 120px;
     left: 12vw;
     z-index: 1;
 }
 .inspiration-img img:nth-child(3){
+    z-index: 2;
     top: 30px;
     left: 30vw;
 }
 .inspiration-img img:nth-child(4){
+    z-index: 2;
     top: 80px;
     right: 0;
 }
@@ -573,7 +575,8 @@ li a:hover {
 /* Subscribe */
 .subscribe {
     text-align: center;
-    margin-bottom: var(--space-2);
+    margin-top: var(--space-2);
+    margin-bottom: var(--space-3);
 }
 .subscribe p {
     margin: 3rem 0;
@@ -603,8 +606,8 @@ li a:hover {
     justify-content: space-between;
     align-items: center;
     letter-spacing: 1px;
-    padding-top: 3rem;
-    padding-bottom: 1rem;
+    padding-top: 4rem;
+    padding-bottom: 2rem;
     width: 100%;
     font-size: var(--fs-xsm);
 }
