@@ -133,7 +133,7 @@ img {
     font-size: var(--fs-sm);
     font-weight: var(--fw-regular);
     text-transform: uppercase;
-    background: var(--second-color);
+    background: var(--primary-color);
     color: var(--black);
     letter-spacing: 3px;
     transition: var(--transition-0_3);
@@ -532,7 +532,7 @@ li a:hover {
     margin: 3rem 0;
 }
 .subscribe .btn:first-child {
-    background: var(--primary-color);
+    background: var(--second-color);
 }
 
 /* Footer */
