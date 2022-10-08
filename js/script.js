@@ -1,17 +1,3 @@
-// ---------------------
-// Java Script
-// ---------------------
-
-// appLoader()
-// appAnimation()
-// appStickyHeader()
-// appMenuBtn()
-// appCounter()
-// appModal()
-// appBtnTop()
-// appMoveTo()
-
-
 // Global
 const page = document.querySelector('.page')
 
@@ -32,40 +18,26 @@ const appLoader = () => {
     }   
     load()
 }
-
 appLoader()
 
 // Animation
 const appAnimation = () => {
-    const animR = document.querySelector('.animation-right')
-    const animL = document.querySelector('.animation-left')
     const animT = document.querySelectorAll('.animation-top')
 
-    // setTimeout(() => (animR.classList.add('show')), 2600)
-    // setTimeout(() => (animL.classList.add('show')), 3000)
-
     window.addEventListener('scroll', anim)
-
-    anim()
 
     function anim() {
     const triggerBottom = window.innerHeight / 1.1
     
     animT.forEach(anim => {
         const animTop = anim.getBoundingClientRect().top
-        // Reset Animation Top
-        // anim.classList.remove('show')
-        
+
         if(animTop < triggerBottom) {
             anim.classList.add('show')
         } 
-        // else {
-        //     anim.classList.remove('show')
-        // }
     })
     }
 }
-
 appAnimation()
 
 
@@ -76,12 +48,6 @@ const appMenuBtn = () => {
 
     menuBtn.addEventListener('click', () => page.classList.toggle('menuActive'))
 
-    // window.addEventListener('resize', function() {
-    //     if (window.matchMedia('(min-width: 720px)').matches) {
-    //         if (page.classList.contains('menuActive')) page.classList.remove('menuActive')
-    //     }
-    // })
-
     const nav = document.querySelector('.nav')
     nav.querySelectorAll('.nav a').forEach(function(link) {
         link.addEventListener("click", function(e) {
@@ -89,7 +55,6 @@ const appMenuBtn = () => {
         })
     })
 }
-
 appMenuBtn()
 
 
@@ -135,12 +100,7 @@ observer.unobserve(statistics)
 }
 )
     CounterObserver.observe(statistics)
-
-// statistics.forEach(stats => {
-//     CounterObserver.observe(stats)
-// })
 }
-
 appCounter()
 
 // Button Scroll Top
@@ -157,7 +117,6 @@ const appBtnTop = () => {
         }
     });
 }
-
 appBtnTop()
 
 
@@ -199,57 +158,4 @@ const appMoveTo = () => {
         moveTo.registerTrigger(trigger)
     })
 }
-
 appMoveTo()
-
-// Animation Mouse Move
-// const moveElements = (e) => {
-//     const shapes = document.querySelectorAll('.shape')
-//     const tracker = document.querySelector('.tracker')
-
-//     tracker.style.top = `${e.clientY}px`
-//     tracker.style.left = `${e.clientX}px`
-//     tracker.style.opacity = 1
-
-//     shapes.forEach((shape) => {
-//         const shapeOffset = shape.getAttribute("data-offset")
-
-//         let offsetX = (window.innerWidth - e.clientX) * shapeOffset
-//         let offsetY = (window.innerHeight - e.clientY) * shapeOffset
-
-//         shape.style.translate = `${offsetX}px ${offsetY}px`
-//     })
-// }
-
-// document.addEventListener("mousemove", moveElements)
-
-
-
-// Parallax Scrolling
-const appParalax = () => {
-    
-    const statistics = document.querySelector('.statistics')
-    const paralaxTop = document.querySelectorAll('.paralax-top')
-    const paralaxbottom = document.querySelectorAll('.paralax-bottom')
-    const paralaxRight = document.querySelectorAll('.paralax-right')
-    const paralaxLeft = document.querySelectorAll('.paralax-left')
-
-window.addEventListener('scroll', function() {
-    let value = statistics.scrollY
-    paralaxTop.forEach(paralaxTop => {
-        paralaxTop.style.transform = 'translateY(' + value * -0.25 + 'px)'
-    })
-    paralaxbottom.forEach(paralaxbottom => {
-        paralaxbottom.style.transform = 'translateY(' + value * 0.25 + 'px)'
-    })
-    paralaxRight.forEach(paralaxRight => {
-        paralaxRight.style.transform = 'translateX(' + value * 0.1 + 'px)'
-    })
-    paralaxLeft.forEach(paralaxLeft => {
-        paralaxLeft.style.transform = 'translateX(' + value * -0.1 + 'px)'
-    })
-    console.log(value)
-})
-}
-
-// appParalax()
