@@ -82,7 +82,7 @@
     box-sizing: border-box;
 }
 html, body {
-    font-size: var(--fs);
+    font-size: 12px;
     font-family: var(--font-1);
     font-weight: var(--fw-light);
     line-height: 1.5;
@@ -127,10 +127,13 @@ img {
 
 /* Button */
 .btn {
+    --padding-btn: 10px 40px;
     display: inline-block;
     margin-right: auto;
-    padding: 10px 40px;
-    font-size: var(--fs-sm);
+    /* padding: 10px 40px; */
+    padding: var(--padding-btn);
+    font-size: 12px;
+    /* font-size: var(--fs-sm); */
     font-weight: var(--fw-regular);
     text-transform: uppercase;
     background: var(--primary-color);
@@ -163,7 +166,7 @@ h1 {
     font-weight: var(--fw-black);
     text-transform: uppercase;
     font-size:  var(--fs-display-1);
-    line-height: 1;
+    line-height: 0.9;
     letter-spacing: 1px;
     margin-bottom: 3rem;
 }
@@ -190,11 +193,14 @@ h4 {
     margin-bottom: 1rem;
     line-height: 1;
 }
+p{
+    font-size: var(--fs);
+}
 .lead {
     color: var(--gray-30);
 }
 /* Media Typography */
-@media screen and (min-width: 720px) {
+/* @media screen and (min-width: 720px) {
     body, .lead {
         font-size: var(--fs-lg);
     }
@@ -228,7 +234,7 @@ h4 {
     h4 {
         font-size: var(--fs-display-1);
     }
-}
+} */
 
 /* Page */
 .page {
@@ -357,7 +363,7 @@ h4 {
 li a {
     color: var(--white);
     font-weight: var(--fw-bold);
-    font-size: var(--fs-xxlg);
+    font-size: 36px;
     letter-spacing: 1px;
     transition: var(--transition-0_3);
 }
@@ -367,7 +373,7 @@ li a:hover {
 .social-link {
     display: flex;
     justify-content: space-between;
-    font-size: var(--fs-sm);
+    font-size: 10px;
     letter-spacing: 1px;
     text-transform: uppercase;
 }
@@ -377,9 +383,9 @@ li a:hover {
 /* Media Header */
 @media screen and (min-width: 620px) {
     .nav{
-        width: 400px;
-        padding-left: 5rem;
-        padding-right: 5rem;
+        width: 500px;
+        padding-left: 4rem;
+        padding-right: 4rem;
     }
     li a:hover {
         color: var(--third-color);
@@ -428,7 +434,7 @@ li a:hover {
     margin-top: var(--space-2);
 }
 .about-content p {
-    margin-bottom: 2rem;
+    margin-bottom: var(--space-1);
 }
 /* Media About */
 @media screen and (min-width: 720px) {
@@ -458,21 +464,18 @@ li a:hover {
     font-size: var(--fs-xlg);
 }
 /* Media Statistics */
-@media screen and (min-width: 720px) {
+@media screen and (min-width: 860px) {
     .statistics-content {
-        gap: 2.5rem;
+        gap: 5rem;
     }
     .counter-container {
-        min-width: 130px;
-    }
-    .statistics-content span {
-        font-size: var(--fs-display-3);
+        min-width: 150px;
     }
 }
 
 /* Inspiration */
 .inspiration-text p {
-    margin-bottom: 1rem;
+    margin-bottom: var(--space-0_5);
 }
 .inspiration-img {
     position: relative;
@@ -531,6 +534,10 @@ li a:hover {
 .subscribe p {
     margin: 3rem 0;
 }
+.subscribe .btn {
+    font-size: 11px;
+    padding: 10px 30px;
+}
 .subscribe .btn:first-child {
     background: var(--second-color);
 }
@@ -550,10 +557,16 @@ li a:hover {
 .footer-left p{
     line-height: 1.1;
 }
+.footer .social-link {
+    font-size: var(--fs-sm);
+}
 /* Media Footer */
 @media screen and (min-width: 720px) {
     .footer-content {
         margin-bottom: var(--space-1);
+    }
+    .footer-left {
+        margin-right: var(--space-1_5);
     }
 }
 
@@ -566,12 +579,15 @@ li a:hover {
     padding-top: 4rem;
     padding-bottom: 2rem;
     width: 100%;
-    font-size: var(--fs-xsm);
+    font-size: 9px;
+}
+.copyright p{
+    font-size: 9px;
 }
 /* Media Copyright */
 @media screen and (min-width: 720px) {
-    .copyright {
-        font-size: var(--fs-sm);
+    .copyright p{
+        font-size: 12px;
     }
 }
 
@@ -601,6 +617,28 @@ li a:hover {
 /* Media Root */
 @media screen and (min-width: 720px) {
     :root{
-        --multiplier: 3;
+        --font-scale-ratio: 1.2;
+        --multiplier: 1.5;
+    }
+    .btn {
+        --padding-btn: 15px 50px;
+    }
+}
+@media screen and (min-width: 860px) {
+    :root {
+        --font-scale-ratio: 1.5;
+        --multiplier: 1.7;
+    }
+    h4 {
+        font-size: var(--fs-xlg);
+    }
+    .statistics-content span {
+        font-size: var(--fs-display-1);
+    }
+}
+@media screen and (min-width: 1020px) {
+    :root {
+        --font-scale-ratio: 1.7;
+        --multiplier: 2;
     }
 }

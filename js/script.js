@@ -76,7 +76,7 @@ const appCounter = () => {
                     const target = +counter.getAttribute('data-target')
                     const count = +counter.innerText
                     
-                    const increment = target / 70
+                    const increment = target / 100
                     
                     if(count < target) {
                         counter.innerText = `${Math.ceil(count + increment)}`
@@ -148,7 +148,7 @@ const appMoveTo = () => {
     const triggers = document.querySelectorAll('.smoothscroll')
 
     const moveTo = new MoveTo({
-        tolerance: 250,
+        tolerance: 200,
         duration: 1200,
         easing: 'easeInOutCubic',
         container: window
