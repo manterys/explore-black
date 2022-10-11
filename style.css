@@ -47,8 +47,8 @@
     --white: hsl(0, 0%, 100%);
 
     /* Space */
-    --multiplier: 1;
-    --space: calc(3rem * var(--multiplier));
+    --space-scale-ratio: 1;
+    --space: calc(3rem * var(--space-scale-ratio));
 
     --space-0_25: calc(0.25 * var(--space));
     --space-0_5: calc(0.5 * var(--space));
@@ -60,17 +60,13 @@
     --space-3: calc(3 * var(--space));
     --space-3_5: calc(3.5 * var(--space));
     --space-4: calc(4 * var(--space));
-    --space-4_5: calc(4.5 * var(--space));
-    --space-5: calc(5 * var(--space));
-    --space-5_5: calc(5.5 * var(--space));
-    --space-6: calc(6 * var(--space));
-
-    /* Max Width */
-    --max-width: 1400px;
 
     /* Transition */
     --transition-0_3: all 0.3s ease;
     --transition-animation: transform 1s, opacity 1s ease;
+
+    /* Button Size */
+    --btn-size: 10px 40px;
 }
 
 /* Base style */
@@ -110,10 +106,11 @@ img {
 /* Utility Classes */
 .max-width {
     width: 100%;
-    max-width: 1200px;
+    max-width: 1000px;
     margin: 0 auto;
     padding-left: var(--space-0_5);
     padding-right: var(--space-0_5);
+    transition: var(--transition-0_3);
 }
 .primary-color {
     color: var(--primary-color);
@@ -127,17 +124,14 @@ img {
 
 /* Button */
 .btn {
-    --padding-btn: 10px 40px;
     display: inline-block;
     margin-right: auto;
-    /* padding: 10px 40px; */
-    padding: var(--padding-btn);
+    padding: var(--btn-size);
     font-size: 12px;
-    /* font-size: var(--fs-sm); */
     font-weight: var(--fw-regular);
     text-transform: uppercase;
     background: var(--primary-color);
-    color: var(--black);
+    color: var(--gray-10);
     letter-spacing: 3px;
     transition: var(--transition-0_3);
 }
@@ -153,20 +147,23 @@ img {
 .animation-right {
     transform: translateX(-150px);
 }
-/* .animation-top {
-    transform: translateY(80px);
-} */
+.animation-top {
+    transform: translateY(-80px);
+}
 .show {
     opacity: 1;
     transform: translateY(-150px);
 }
 
 /* Typography */
+h1, h2, h3, h4, p, span {
+    transition: font-size .2s ease;
+}
 h1 {
     font-weight: var(--fw-black);
     text-transform: uppercase;
     font-size:  var(--fs-display-1);
-    line-height: 0.9;
+    line-height: 0.8;
     letter-spacing: 1px;
     margin-bottom: 3rem;
 }
@@ -199,43 +196,6 @@ p{
 .lead {
     color: var(--gray-30);
 }
-/* Media Typography */
-/* @media screen and (min-width: 720px) {
-    body, .lead {
-        font-size: var(--fs-lg);
-    }
-    h1 {
-        font-size:  var(--fs-display-3);
-    }
-    h2 {
-        font-size:  var(--fs-xlg);
-    }
-    h3 {
-        font-size: var(--fs);
-    }
-    h4 {
-        font-size: var(--fs-xlg);
-        text-transform: uppercase;
-        margin-bottom: 2rem;
-    }
-}
-@media screen and (min-width: 860px) {
-    h2 {
-        font-size:  var(--fs-xxlg);
-    }
-    h4 {
-        font-size: var(--fs-xxlg);
-    }
-}
-@media screen and (min-width: 1020px) {
-    h2 {
-        font-size:  var(--fs-display-1);
-    }
-    h4 {
-        font-size: var(--fs-display-1);
-    }
-} */
-
 /* Page */
 .page {
     display: flex;
@@ -380,8 +340,8 @@ li a:hover {
 .menuActive .nav {
     transform: translateY(0px);
 }
-/* Media Header */
-@media screen and (min-width: 620px) {
+/* Media Nav */
+@media screen and (min-width: 720px) {
     .nav{
         width: 500px;
         padding-left: 4rem;
@@ -389,6 +349,19 @@ li a:hover {
     }
     li a:hover {
         color: var(--third-color);
+    }
+    .social-link {
+        justify-content: flex-start;
+        gap: 2rem;
+    }
+}
+/* Media Nav Landscape Only Mobile Devices */
+@media screen and (orientation: landscape) and (hover: none){
+    .nav ul {
+        margin-bottom: 2rem;
+    }
+    .nav ul li {
+        margin-bottom: 0rem;
     }
     .social-link {
         justify-content: flex-start;
@@ -540,6 +513,7 @@ li a:hover {
 }
 .subscribe .btn:first-child {
     background: var(--second-color);
+    margin-right: var(--space-0_25);
 }
 
 /* Footer */
@@ -618,16 +592,14 @@ li a:hover {
 @media screen and (min-width: 720px) {
     :root{
         --font-scale-ratio: 1.2;
-        --multiplier: 1.5;
-    }
-    .btn {
-        --padding-btn: 15px 50px;
+        --space-scale-ratio: 1.5;
+        --btn-size: 15px 50px;
     }
 }
 @media screen and (min-width: 860px) {
     :root {
         --font-scale-ratio: 1.5;
-        --multiplier: 1.7;
+        --space-scale-ratio: 1.7;
     }
     h4 {
         font-size: var(--fs-xlg);
@@ -639,6 +611,14 @@ li a:hover {
 @media screen and (min-width: 1020px) {
     :root {
         --font-scale-ratio: 1.7;
-        --multiplier: 2;
+        --space-scale-ratio: 2;
+    }
+}
+/* Media Root Landscape Only Mobile Devices*/
+@media screen and (orientation: landscape) and (hover: none) {
+    :root{
+        --font-scale-ratio: 0.9;
+        --space-scale-ratio: 1;
+        --btn-size: 10px 50px;
     }
 }
